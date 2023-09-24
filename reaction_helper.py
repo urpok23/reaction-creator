@@ -68,6 +68,16 @@ class Reaction:
     type: ReactionType = ReactionType.Irreversible
 
 
+class ReactionSystem:
+
+    def __init__(self, reactions: list[Reaction]):
+
+        self._reactions = reactions
+
+    def get_coefficients(self):
+        pass
+
+
 A, B, C, D, E = Component.create(5)
 
 r1 = Reaction(A+2*B, C+D)
