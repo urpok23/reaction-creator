@@ -56,8 +56,9 @@ class Component(_ProxyComponent):
 
 class ReactionType(Enum):
 
-    Irreversible = auto()
-    Reversible = auto()
+    PowerLaw = auto()
+    Conversion = auto()
+    Equilibrium = auto()
 
 
 @dataclass
@@ -65,7 +66,7 @@ class Reaction:
 
     lhs: _ProxyComponent
     rhs: _ProxyComponent
-    type: ReactionType = ReactionType.Irreversible
+    type: ReactionType = ReactionType.PowerLaw
 
 
 class ReactionSystem:
@@ -84,4 +85,5 @@ r1 = Reaction(A+2*B, C+D)
 r2 = Reaction(A+D, 2*E)
 
 assert len(r1.lhs._components) == 2
+assert len(r1.rhs._components) == 2
 assert r1.lhs._components[0] == A._id and r1.lhs._components[1] == B._id
